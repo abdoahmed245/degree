@@ -100,30 +100,34 @@
                 if (reg.test(val)) {
                     const targetUrl = encodeURIComponent(`http://abdoahmed7xx-001-site1.ktempurl.com/output_dir/a.php?name=${val}`);
                     const proxyUrl = `https://api.allorigins.win/get?url=${targetUrl}`;
-                    loader.classList.add("show")
+                    loader.classList.add("show");
                     fetch(proxyUrl)
                     .then(response => response.json())
                     .then(data => {
                         // تحويل النص إلى JSON
-                        loader.classList.remove("show")
+                        loader.classList.remove("show");
                         const jsonData = JSON.parse(data.contents);
                         if (jsonData.length > 0) {
                             jsonData.forEach(e => {
                                 createx(e);
                             });
                         } else {
-                            p.innerHTML = "لم يتم العثور علي الاسم"
-                            
+                            p.innerHTML = "لم يتم العثور علي الاسم";
                         }
                     })
                     .catch(error => {
-                        console.error('Error:', error);
+                        loader.classList.remove("show");
+                        if (error.message === 'Failed to fetch') {
+                            p.innerHTML = "هناك مشكلة في الاتصال بالإنترنت أو الرابط عليه ضغط. حاول مرة أخرى لاحقاً.";
+                        } else {
+                            p.innerHTML = "حدث خطأ غير متوقع: " + error.message;
+                        }
                     });
                 } else {
-                    p.innerHTML = "ادخل الاسم بهذا الشكل : عبدالرحمن احمد"
+                    p.innerHTML = "ادخل الاسم بهذا الشكل : عبدالرحمن احمد";
                 }
             } else {
-                p.innerHTML = "ادخل الاسم!"
+                p.innerHTML = "ادخل الاسم!";
             }
         }
         
