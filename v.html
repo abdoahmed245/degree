@@ -66,6 +66,7 @@
                 <th>الاسم</th>
                 <th>رقم الجلوس</th>
                 <th>الدرجه</th>
+                <th>النسبه</th>
             </thead>
             <tbody>
                 
@@ -89,6 +90,9 @@
                 
                 tr.append(td);
             }
+            let tdx = document.createElement('td');
+            tdx.innerHTML = `${+pr[keys[2]] * 100 / 410}%`
+            tr.append(tdx);
             tbody.append(tr);
         }
 
