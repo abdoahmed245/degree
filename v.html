@@ -91,7 +91,7 @@
                 tr.append(td);
             }
             let tdx = document.createElement('td');
-            let ns = `${+pr[keys[2]] * 100 / 410}`
+            let ns = +pr[keys[2]] * 100 / 410
             tdx.innerHTML = `${ns.toFixed(1)}%`
             tr.append(tdx);
             tbody.append(tr);
